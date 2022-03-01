@@ -1,0 +1,41 @@
+﻿@model Library.Models.BookRequest
+<h4>
+    Especialidad
+</h4>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="mb-3">
+        <label asp-for="RequestDate"></label>
+        <input asp-for="RequestDate" />
+        <span asp-validation-for="RequestDate"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> Select Student</label>
+        <select name="StudentId" class="form-control" asp-items="@ViewBag.Students"></select>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label"> Select Book</label>
+        <select name="BookId" class="form-control" asp-items="@ViewBag.Books"></select>
+    </div>
+
+    <div class="checkbox mb-3">
+        <input asp-for="IsBookReturned" />
+        <label class="form-label" asp-for="IsBookReturned"></label>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="ReturnDate"></label>
+        <input asp-for="ReturnDate" />
+    </div>
+
+    <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Grabar" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

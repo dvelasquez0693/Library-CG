@@ -1,0 +1,33 @@
+﻿@model Library.Models.Books
+
+<h4>Students</h4>
+<div>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Name"></label>
+            <input name="Name" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Publisher"></label>
+            <input name="Publisher" class="form-control" asp-for="Publisher" />
+            <span asp-validation-for="Publisher"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Area"></label>
+            <input name="Area" class="form-control" asp-for="Area" />
+            <span asp-validation-for="Area"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"> Select Author</label>
+            <select class="form-select" name="AuthorId" asp-items="@ViewBag.Authors"></select>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Grabar" />
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

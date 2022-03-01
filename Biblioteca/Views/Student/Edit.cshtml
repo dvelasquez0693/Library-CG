@@ -1,0 +1,36 @@
+﻿@model Library.Models.Student
+<h4>
+    Especialidad
+</h4>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="Id">
+    <div class="mb-3">
+        <label class="form-label" asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Age"></label>
+        <input class="form-control" asp-for="Age" />
+        <span asp-validation-for="Age"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Address"></label>
+        <input class="form-control" asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Career"></label>
+        <input class="form-control" asp-for="Career" />
+        <span asp-validation-for="Career"></span>
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Grabar">
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

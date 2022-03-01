@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Library.Models.Student>
+
+
+<!DOCTYPE html>
+<p>
+    <a asp-action="Create">Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Career)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @*Aqui colocaremos mas adelante para mostrar los registros de la base de datos*@
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.Career)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.Age)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

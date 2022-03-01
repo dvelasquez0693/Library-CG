@@ -1,0 +1,163 @@
+﻿@model Library.Models.BookRequestIndexViewModel
+
+
+<!DOCTYPE html>
+<p>
+    <a asp-action="Create">Nuevo</a>
+</p>
+<div>
+    <form method="post">
+        <h5>Filters</h5>
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <div class="col mb-3">
+                    <label class="form-label"> Select Student</label>
+                    <select id="StudentId" name="StudentId" class="form-control" asp-for="Filter.StudentId" asp-items="@ViewBag.Students"></select>
+                </div>
+
+
+
+                <div class="col mb-3">
+                    <label class="form-label"> Select Book</label>
+                    <select id="BookId" name="BookId" class="form-control" asp-for="Filter.BookId" asp-items="@ViewBag.Books"></select>
+                </div>
+
+                <div class="col mb-3">
+                    <label class="form-label"> Select Author</label>
+                    <select id="AuthorId" name="AuthorId" class="form-control" asp-items="@ViewBag.Authors"></select>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col mb-3">
+                    <label class="form-label">From</label>
+                    <input class="form-control" name="From" asp-for="Filter.From" />
+                    <span asp-validation-for="Filter.From"></span>
+                </div>
+
+                <div class="col mb-3">
+                    <label class="form-label">To</label>
+                    <input class="form-control" asp-for="Filter.To" />
+                    <span name="To" asp-validation-for="Filter.To"></span>
+                </div>
+
+                <div class="col mb-3">
+                    <label class="form-label" asp-for="Filter.ReturnDate"></label>
+                    <input class="form-control" name="ReturnDate" asp-for="Filter.ReturnDate" />
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col mb-3">
+                    <input class="form-check-input" type="checkbox" name="IsBookReturned" />
+                    <label class="form-check-label">IsReturned</label>
+                </div>
+
+                <div class="col"></div>
+                <div class="col"></div>
+
+            </div>
+
+
+
+
+            <div class="row">
+
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" asp-action="Filter" value="Filter" />
+                </div>
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" asp-action="Index" value="Refresh" />
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+
+
+
+</div>
+<table class="mt-5 table">
+    <thead>
+        <tr>
+            <th>
+                Book
+            </th>
+            <th>
+                Student
+            </th>
+            <th>
+                Request Date
+            </th>
+            <th>
+                Return Date
+            </th>
+            <th>
+                Returned
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @*Aqui colocaremos mas adelante para mostrar los registros de la base de datos*@
+        @if (Model != null)
+        {
+            @foreach (var item in Model.BookRequests)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.BookName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.RequestDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.ReturnDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelITem => item.IsBookReturned)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-studentId="@item.StudentId" asp-route-bookId="@item.BookId">Editar</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-studentId="@item.StudentId" asp-route-bookId="@item.BookId">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+</table>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#StudentId").prepend('<option></option>').val('');
+        $("#BookId").prepend('<option></option>').val('');
+        $("#AuthorId").prepend('<option></option>').val('');
+    });
+</script>
+

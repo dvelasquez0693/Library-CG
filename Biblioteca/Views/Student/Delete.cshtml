@@ -1,0 +1,20 @@
+﻿@model Library.Models.Student
+
+<h3>Esta usted seguro de eliminar el siguiente registro?</h3>
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(modelo=>modelo.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(modelo => modelo.Name)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id">
+        <input type="submit" value="Eliminar">
+    </form>
+    <div>
+        <a asp-action="Index">Volver</a>
+    </div>
+</div>

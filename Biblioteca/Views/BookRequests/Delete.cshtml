@@ -1,0 +1,11 @@
+﻿@model Library.Models.BookRequest
+
+<h3>Esta usted seguro de eliminar el siguiente registro?</h3>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id">
+    <input class="btn btn-primary" type="submit" value="Eliminar">
+</form>
+<div>
+    <a asp-action="Index">Volver</a>
+</div>

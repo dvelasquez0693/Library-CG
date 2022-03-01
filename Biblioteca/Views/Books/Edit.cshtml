@@ -1,0 +1,33 @@
+﻿@model Library.Models.Books
+<h4>
+    Especialidad
+</h4>
+
+<div>
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Id">
+        <div>
+            <label class="form-label" asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label class="form-label" asp-for="Publisher"></label>
+            <input class="form-control" asp-for="Publisher" />
+            <span asp-validation-for="Publisher"></span>
+        </div>
+        <div>
+            <label class="form-label" asp-for="Area"></label>
+            <input class="form-control" asp-for="Area" />
+            <span asp-validation-for="Area"></span>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Grabar">
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
